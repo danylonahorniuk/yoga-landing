@@ -135,6 +135,10 @@ export default function Classes() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
+            <div
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{ boxShadow: "inset 0 0 50px 18px #F5F0E8" }}
+            />
           </div>
 
           {/* Info */}
