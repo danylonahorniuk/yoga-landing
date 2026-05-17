@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import { useModal } from "./modals/ModalContext";
 
 const tabs = [
   {
@@ -71,6 +72,7 @@ const tabs = [
 ];
 
 export default function Classes() {
+  const { openBooking } = useModal();
   const [activeId, setActiveId] = useState("beginners");
   const [displayId, setDisplayId] = useState("beginners");
   const [isExiting, setIsExiting] = useState(false);
@@ -160,12 +162,12 @@ export default function Classes() {
               ))}
             </div>
 
-            <a
-              href="#membership"
-              className="mt-10 inline-block bg-[#2D5A27] text-white px-8 py-3.5 rounded-md text-base font-medium hover:bg-[#1e3f1b] transition-colors"
+            <button
+              onClick={openBooking}
+              className="cursor-pointer mt-10 inline-block bg-[#2D5A27] text-white px-8 py-3.5 rounded-md text-base font-medium hover:bg-[#1e3f1b] transition-colors"
             >
               Отримати безкоштовне заняття
-            </a>
+            </button>
           </div>
         </div>
       </div>

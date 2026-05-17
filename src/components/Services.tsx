@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useModal } from "./modals/ModalContext";
 
 const ic = (path: React.ReactNode) => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#2D5A27" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -79,6 +80,7 @@ const services = [
 ];
 
 export default function Services() {
+  const { openBooking, openContact } = useModal();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -104,9 +106,9 @@ export default function Services() {
                 Досліджуйте йогу в нашій студії. Познайомтесь з інструкторами та відчуйте всі переваги.
               </p>
             </div>
-            <a href="#membership" className="mt-6 bg-white text-[#2D5A27] text-sm font-semibold px-4 py-2.5 rounded-md text-center hover:bg-green-50 transition-colors">
+            <button onClick={openBooking} className="cursor-pointer mt-6 bg-white text-[#2D5A27] text-sm font-semibold px-4 py-2.5 rounded-md text-center hover:bg-green-50 transition-colors">
               Спробувати безкоштовно
-            </a>
+            </button>
           </div>
 
           {/* Scrollable cards */}
@@ -120,9 +122,9 @@ export default function Services() {
                 <div className="mb-1">{s.icon}</div>
                 <h3 className="font-semibold text-gray-900 text-[15px]">{s.title}</h3>
                 <p className="text-gray-500 text-sm flex-1 leading-relaxed">{s.desc}</p>
-                <a href="#contact" className="text-[#2D5A27] text-sm font-medium border border-[#2D5A27] px-4 py-1.5 rounded-md w-fit hover:bg-[#2D5A27] hover:text-white transition-colors">
+                <button onClick={openContact} className="cursor-pointer text-[#2D5A27] text-sm font-medium border border-[#2D5A27] px-4 py-1.5 rounded-md w-fit hover:bg-[#2D5A27] hover:text-white transition-colors">
                   Дізнатись більше
-                </a>
+                </button>
               </div>
             ))}
           </div>

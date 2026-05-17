@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import { Info } from "lucide-react";
+import { useModal } from "./modals/ModalContext";
 
 export default function Hero() {
+  const { openBooking, openContact } = useModal();
   return (
     <section id="home" className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#F0EDE6" }}>
       {/* Full-width background image */}
@@ -40,19 +43,19 @@ export default function Hero() {
             Ласкаво просимо до Great Fit — місця, де традиції зустрічаються з інноваціями. Наші тренери проведуть вас через трансформаційні програми, що зміцнять тіло та заспокоять розум.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <a
-              href="#membership"
-              className="bg-[#2D5A27] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#1e3f1b] transition-colors"
+            <button
+              onClick={openBooking}
+              className="cursor-pointer bg-[#2D5A27] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#1e3f1b] transition-colors"
             >
               Записатись на сесію
-            </a>
-            <a
-              href="#contact"
-              className="flex items-center gap-2 text-gray-700 text-sm font-medium hover:text-[#2D5A27] transition-colors"
+            </button>
+            <button
+              onClick={openContact}
+              className="cursor-pointer flex items-center gap-2 text-gray-700 text-sm font-medium hover:text-[#2D5A27] transition-colors"
             >
               Зв'язатись з нами
               <Info size={16} />
-            </a>
+            </button>
           </div>
         </div>
       </div>

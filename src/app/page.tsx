@@ -5,10 +5,13 @@ import Classes from "@/components/Classes";
 import Team from "@/components/Team";
 import Membership from "@/components/Membership";
 import Footer from "@/components/Footer";
+import { ModalProvider } from "@/components/modals/ModalContext";
+import BookingModal from "@/components/modals/BookingModal";
+import ContactModal from "@/components/modals/ContactModal";
 
 export default function Home() {
   return (
-    <>
+    <ModalProvider>
       <Navbar />
       <Hero />
       <Services />
@@ -16,6 +19,8 @@ export default function Home() {
       <Team />
       <Membership />
       <Footer />
-    </>
+      <BookingModal />
+      <ContactModal />
+    </ModalProvider>
   );
 }

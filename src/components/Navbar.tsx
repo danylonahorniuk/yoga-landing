@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Menu, X, Leaf, ShoppingBag } from "lucide-react";
+import { useModal } from "./modals/ModalContext";
 
 const links = [
   { label: "Головна", href: "#home" },
@@ -12,6 +13,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { openBooking } = useModal();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -39,13 +41,13 @@ export default function Navbar() {
         </nav>
 
         {/* CTA */}
-        <a
-          href="#membership"
-          className="hidden md:flex items-center gap-2 bg-[#2D5A27] text-white text-sm px-4 py-2 rounded-md hover:bg-[#1e3f1b] transition-colors"
+        <button
+          onClick={openBooking}
+          className="cursor-pointer hidden md:flex items-center gap-2 bg-[#2D5A27] text-white text-sm px-4 py-2 rounded-md hover:bg-[#1e3f1b] transition-colors"
         >
           <ShoppingBag size={15} />
           Записатись
-        </a>
+        </button>
 
         {/* Mobile burger */}
         <button
@@ -70,13 +72,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#membership"
-            className="bg-[#2D5A27] text-white text-sm px-4 py-2 rounded-md text-center"
-            onClick={() => setOpen(false)}
+          <button
+            className="cursor-pointer bg-[#2D5A27] text-white text-sm px-4 py-2 rounded-md text-center"
+            onClick={() => { setOpen(false); openBooking(); }}
           >
             Записатись
-          </a>
+          </button>
         </div>
       )}
     </header>

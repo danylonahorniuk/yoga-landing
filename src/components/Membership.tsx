@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import { Info } from "lucide-react";
+import { useModal } from "./modals/ModalContext";
 
 export default function Membership() {
+  const { openBooking, openContact } = useModal();
   return (
     <section id="membership" className="relative overflow-hidden" style={{ minHeight: "340px" }}>
       {/* Background */}
@@ -23,19 +26,19 @@ export default function Membership() {
             Насолоджуйтесь безкоштовним 30-денним пробним членством. Отримайте доступ до нашої студії, досвідчених тренерів та різноманітних класів без будь-яких зобов'язань. Відчуйте переваги йоги та трансформуйте своє самопочуття.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="bg-[#2D5A27] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#1e3f1b] transition-colors"
+            <button
+              onClick={openBooking}
+              className="cursor-pointer bg-[#2D5A27] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#1e3f1b] transition-colors"
             >
               Записатись на сесію
-            </a>
-            <a
-              href="#contact"
-              className="flex items-center gap-2 text-gray-700 text-sm hover:text-[#2D5A27] transition-colors"
+            </button>
+            <button
+              onClick={openContact}
+              className="cursor-pointer flex items-center gap-2 text-gray-700 text-sm hover:text-[#2D5A27] transition-colors"
             >
               Зв'язатись з нами
               <Info size={16} />
-            </a>
+            </button>
           </div>
         </div>
       </div>
