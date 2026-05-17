@@ -90,7 +90,7 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">Наші Послуги</h2>
-          <p className="text-gray-500 text-sm">Все що потрібно для вашого добробуту</p>
+          <p className="text-gray-500 text-base">Все що потрібно для вашого добробуту</p>
         </div>
 
         <div className="flex gap-7 items-stretch">

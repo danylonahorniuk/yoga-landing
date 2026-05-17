@@ -4,32 +4,32 @@ const trainers = [
   {
     name: "Олена Коваль",
     role: "Хатха-йога, медитація",
-    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop&crop=faces&q=80",
   },
   {
     name: "Марія Петренко",
     role: "Флай-йога, розтяжка",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=500&fit=crop&crop=faces&q=80",
   },
   {
     name: "Дмитро Сидоренко",
     role: "Аштанга, силова йога",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces&q=80",
   },
   {
     name: "Наталія Бойко",
     role: "Інь-йога, дихання",
-    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=500&fit=crop&crop=faces&q=80",
   },
   {
     name: "Андрій Мельник",
     role: "Зумба, кардіо",
-    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=faces&q=80",
   },
   {
     name: "Ірина Шевченко",
-    role: "Йога для вагітних",
-    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80",
+    role: "Йога для початківців",
+    img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=500&fit=crop&crop=faces&q=80",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Team() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-6">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">Наша чудова команда</h2>
-          <p className="text-gray-500 text-sm">Досвідчені фахівці, що присвятили себе вашому добробуту</p>
+          <p className="text-gray-500 text-base">Досвідчені фахівці, що присвятили себе вашому добробуту</p>
         </div>
         <p className="text-gray-500 text-sm text-center max-w-2xl mx-auto mb-12">
           Познайомтесь з нашою командою експертів — кожен із них має глибокі знання йоги та фітнесу. Вони допоможуть вам досягти цілей у безпечній та підтримуючій атмосфері.
@@ -47,18 +47,18 @@ export default function Team() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           {trainers.map((t) => (
-            <div key={t.name} className="relative h-52 md:h-64 rounded-2xl overflow-hidden group">
+            <div key={t.name} className="relative h-60 md:h-72 rounded-2xl overflow-hidden group">
               <Image
                 src={t.img}
                 alt={t.name}
                 fill
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="text-white font-semibold text-sm">{t.name}</p>
-                <p className="text-green-300 text-xs">{t.role}</p>
+                <p className="text-green-300 text-xs mt-0.5">{t.role}</p>
               </div>
             </div>
           ))}
