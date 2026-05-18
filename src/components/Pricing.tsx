@@ -52,7 +52,7 @@ export default function Pricing() {
   const { openBooking } = useModal();
 
   return (
-    <section id="pricing" className="py-20 bg-white">
+    <section id="pricing" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">Тарифи та ціни</h2>
