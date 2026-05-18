@@ -25,11 +25,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Top gradient for navbar readability */}
-      <div
-        className="absolute inset-x-0 top-0 h-28 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, transparent 100%)" }}
-      />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex items-center">

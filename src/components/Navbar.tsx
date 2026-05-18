@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Leaf, ShoppingBag } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
 
@@ -13,34 +13,24 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { openBooking } = useModal();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight - 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const dark = scrolled;
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
-        backgroundColor: dark ? "rgba(35, 45, 30, 0.97)" : "rgba(0,0,0,0.12)",
+        backgroundColor: "rgba(255,255,255,0.92)",
         backdropFilter: "blur(8px)",
-        boxShadow: "none",
+        boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 font-bold transition-colors duration-300"
-          style={{ color: "#fff", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}>
+        <a href="#home" className="flex items-center gap-2 font-bold" style={{ color: "#485C46" }}>
           <Leaf size={22} />
           <span className="text-sm leading-tight">
             Great Fit<br />
-            <span className={`font-normal text-xs ${dark ? "text-white/60" : "text-gray-500"}`}>Yoga Studio</span>
+            <span className="font-normal text-xs text-gray-500">Yoga Studio</span>
           </span>
         </a>
 
@@ -50,10 +40,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm transition-colors duration-300"
-              style={{ color: "rgba(255,255,255,0.9)", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
+              className="text-sm text-gray-600 hover:text-[#485C46] transition-colors"
             >
               {l.label}
             </a>
@@ -63,13 +50,7 @@ export default function Navbar() {
         {/* CTA */}
         <button
           onClick={openBooking}
-          className="cursor-pointer hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-md transition-colors duration-300"
-          style={{
-            backgroundColor: dark ? "#485C46" : "#485C46",
-            color: "#fff",
-          }}
-          onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#3a4a38")}
-          onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#485C46")}
+          className="cursor-pointer hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-md bg-[#485C46] text-white hover:bg-[#3a4a38] transition-colors"
         >
           <ShoppingBag size={15} />
           Записатись
@@ -77,8 +58,7 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden transition-colors duration-300"
-          style={{ color: "#fff", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}
+          className="md:hidden text-gray-600"
           onClick={() => setOpen(!open)}
           aria-label="Меню"
         >
@@ -88,24 +68,19 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div
-          className="md:hidden border-t px-6 py-4 flex flex-col gap-4"
-          style={{ backgroundColor: dark ? "rgba(35,45,30,0.97)" : "#fff",
-            borderColor: dark ? "rgba(255,255,255,0.1)" : "#e5e7eb" }}
-        >
+        <div className="md:hidden border-t border-gray-100 px-6 py-4 flex flex-col gap-4 bg-white">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm"
-              style={{ color: dark ? "rgba(255,255,255,0.8)" : "#374151" }}
+              className="text-sm text-gray-600 hover:text-[#485C46] transition-colors"
               onClick={() => setOpen(false)}
             >
               {l.label}
             </a>
           ))}
           <button
-            className="cursor-pointer bg-[#485C46] text-white text-sm px-4 py-2 rounded-md text-center"
+            className="cursor-pointer bg-[#485C46] text-white text-sm px-4 py-2 rounded-md text-center hover:bg-[#3a4a38] transition-colors"
             onClick={() => { setOpen(false); openBooking(); }}
           >
             Записатись
