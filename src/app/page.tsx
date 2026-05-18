@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Classes from "@/components/Classes";
 import Team from "@/components/Team";
+import Pricing from "@/components/Pricing";
 import Membership from "@/components/Membership";
 import Footer from "@/components/Footer";
 import { ModalProvider } from "@/components/modals/ModalContext";
@@ -17,6 +18,7 @@ export default function Home() {
       <Services />
       <Classes />
       <Team />
+      <Pricing />
       <Membership />
       <Footer />
       <BookingModal />
