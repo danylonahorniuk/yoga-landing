@@ -1,25 +1,21 @@
 "use client";
-import Image from "next/image";
 import { Info } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
 
 export default function Membership() {
   const { openBooking, openContact } = useModal();
   return (
-    <section id="membership" className="relative overflow-hidden" style={{ minHeight: "340px" }}>
-      {/* Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=85"
-          alt="Йога клас"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-      </div>
-      <div className="absolute inset-0 bg-black/35 z-[1] pointer-events-none" />
-
-      <div className="relative z-[2] max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
+    <section
+      id="membership"
+      style={{
+        minHeight: "340px",
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=85)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
         <div className="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
             Безкоштовне 30-денне членство
