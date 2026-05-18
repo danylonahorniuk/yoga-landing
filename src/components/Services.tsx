@@ -102,7 +102,7 @@ export default function Services() {
               <h3 className="font-bold text-base leading-snug mb-4 text-center">
                 Почніть з безкоштовного пробного заняття
               </h3>
-              <p className="text-green-200 text-sm text-center leading-relaxed">
+              <p className="text-white/80 text-sm text-center leading-relaxed">
                 Досліджуйте йогу в нашій студії. Познайомтесь з інструкторами та відчуйте всі переваги.
               </p>
             </div>
