@@ -28,15 +28,15 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
       style={{
-        backgroundColor: dark ? "rgba(35, 45, 30, 0.97)" : "transparent",
-        backdropFilter: dark ? "blur(8px)" : "none",
+        backgroundColor: dark ? "rgba(35, 45, 30, 0.97)" : "rgba(0,0,0,0.12)",
+        backdropFilter: "blur(8px)",
         boxShadow: "none",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 font-bold transition-colors duration-300"
-          style={{ color: dark ? "#fff" : "#2d3a2d" }}>
+          style={{ color: "#fff", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}>
           <Leaf size={22} />
           <span className="text-sm leading-tight">
             Great Fit<br />
@@ -51,9 +51,9 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               className="text-sm transition-colors duration-300"
-              style={{ color: dark ? "rgba(255,255,255,0.8)" : "#2d3a2d" }}
-              onMouseEnter={e => (e.currentTarget.style.color = dark ? "#fff" : "#485C46")}
-              onMouseLeave={e => (e.currentTarget.style.color = dark ? "rgba(255,255,255,0.8)" : "#2d3a2d")}
+              style={{ color: "rgba(255,255,255,0.9)", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.9)")}
             >
               {l.label}
             </a>
@@ -78,7 +78,7 @@ export default function Navbar() {
         {/* Mobile burger */}
         <button
           className="md:hidden transition-colors duration-300"
-          style={{ color: dark ? "#fff" : "#2d3a2d" }}
+          style={{ color: "#fff", textShadow: dark ? "none" : "0 1px 4px rgba(0,0,0,0.3)" }}
           onClick={() => setOpen(!open)}
           aria-label="Меню"
         >
