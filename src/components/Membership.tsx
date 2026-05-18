@@ -15,9 +15,9 @@ export default function Membership() {
         className="object-cover object-center"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-black/35 z-[1]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
+      <div className="relative z-[2] max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
         <div className="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
             Безкоштовне 30-денне членство
