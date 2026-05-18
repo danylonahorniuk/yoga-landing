@@ -56,7 +56,7 @@ export default function Testimonials() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {reviews.map((r) => (
-            <div key={r.name} className="bg-white rounded-2xl p-6 flex flex-col gap-4 shadow-sm">
+            <div key={r.name} className="bg-white rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default">
               {/* Stars */}
               <div className="flex gap-0.5">
                 {Array.from({ length: r.rating }).map((_, i) => (
