@@ -17,8 +17,8 @@ export default function Home() {
       <Hero />
       <Services />
       <Classes />
-      <Team />
       <Pricing />
+      <Team />
       <Membership />
       <Footer />
       <BookingModal />
