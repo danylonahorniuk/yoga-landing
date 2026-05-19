@@ -5,6 +5,7 @@ import Classes from "@/components/Classes";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
+import Contacts from "@/components/Contacts";
 import Membership from "@/components/Membership";
 import Footer from "@/components/Footer";
 import { ModalProvider } from "@/components/modals/ModalContext";
@@ -22,6 +23,7 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <Team />
+      <Contacts />
       <Membership />
       <Footer />
       <BookingModal />
