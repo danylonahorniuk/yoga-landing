@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { ModalProvider } from "@/components/modals/ModalContext";
 import BookingModal from "@/components/modals/BookingModal";
 import ContactModal from "@/components/modals/ContactModal";
+import ServiceModal from "@/components/modals/ServiceModal";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <Footer />
       <BookingModal />
       <ContactModal />
+      <ServiceModal />
     </ModalProvider>
   );
 }

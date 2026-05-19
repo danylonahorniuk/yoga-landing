@@ -13,19 +13,55 @@ import {
 import { useModal } from "./modals/ModalContext";
 
 const iconProps = { size: 48, stroke: 1.8, color: "#485C46" };
+const iconSmall = { size: 28, stroke: 1.8, color: "#485C46" };
 
 const services = [
-  { icon: <IconSeeding {...iconProps} />,   title: "Спа-зона",            desc: "Відновіться та розслабтесь у нашій преміальній спа-зоні після тренування. Ідеально для тіла та душі." },
-  { icon: <IconHanger {...iconProps} />,    title: "Роздягальні",          desc: "Сучасні роздягальні з усіма зручностями для комфортного перебування у нашому центрі." },
-  { icon: <IconBook {...iconProps} />,      title: "Безкоштовні уроки",    desc: "Вступні уроки для новачків — спробуй йогу без жодних зобов'язань і відчуй усі переваги." },
-  { icon: <IconYoga {...iconProps} />,      title: "Килимки в оренду",     desc: "Не маєш свого килимка? Ми надаємо якісні йога-килимки для кожного відвідувача студії." },
-  { icon: <IconUserStar {...iconProps} />,  title: "Персональний тренер",  desc: "Індивідуальні заняття з досвідченим тренером для швидкого прогресу та досягнення цілей." },
-  { icon: <IconDroplets {...iconProps} />,  title: "Душові кімнати",       desc: "Чисті та зручні душові кімнати з усім необхідним після тренування." },
-  { icon: <IconMoodKid {...iconProps} />,   title: "Дитяча йога",          desc: "Спеціальні заняття для дітей від 5 років. Гнучкість, координація і любов до здоров'я." },
+  {
+    icon: <IconSeeding {...iconProps} />, iconSmall: <IconSeeding {...iconSmall} />,
+    title: "Спа-зона",
+    desc: "Відновіться та розслабтесь у нашій преміальній спа-зоні після тренування. Ідеально для тіла та душі.",
+    details: "Наша спа-зона обладнана сучасними процедурними кімнатами, де ви можете відновити сили після інтенсивного тренування. До послуг відвідувачів: аромотерапія, теплові процедури, масаж та зона релаксації. Відкрита щодня з 8:00 до 21:00.",
+  },
+  {
+    icon: <IconHanger {...iconProps} />, iconSmall: <IconHanger {...iconSmall} />,
+    title: "Роздягальні",
+    desc: "Сучасні роздягальні з усіма зручностями для комфортного перебування у нашому центрі.",
+    details: "Просторі та чисті роздягальні з індивідуальними шафками, де ви можете безпечно залишити речі під час тренування. Є все необхідне: фени, дзеркала, лавки. Шафки відкриваються власним замком або кодом.",
+  },
+  {
+    icon: <IconBook {...iconProps} />, iconSmall: <IconBook {...iconSmall} />,
+    title: "Безкоштовні уроки",
+    desc: "Вступні уроки для новачків — спробуй йогу без жодних зобов'язань і відчуй усі переваги.",
+    details: "Перший місяць занять — абсолютно безкоштовно для нових відвідувачів. Ви отримуєте доступ до всіх групових класів, консультацію з тренером та вступний інструктаж. Жодних прихованих умов — просто приходь і спробуй.",
+  },
+  {
+    icon: <IconYoga {...iconProps} />, iconSmall: <IconYoga {...iconSmall} />,
+    title: "Килимки в оренду",
+    desc: "Не маєш свого килимка? Ми надаємо якісні йога-килимки для кожного відвідувача студії.",
+    details: "Всі килимки виготовлені з екологічно чистих матеріалів і ретельно очищуються після кожного використання. Оренда входить у вартість абонементу — нічого додатково платити не потрібно. Також доступні блоки, ремені та болстери.",
+  },
+  {
+    icon: <IconUserStar {...iconProps} />, iconSmall: <IconUserStar {...iconSmall} />,
+    title: "Персональний тренер",
+    desc: "Індивідуальні заняття з досвідченим тренером для швидкого прогресу та досягнення цілей.",
+    details: "Персональний тренер розробить індивідуальну програму занять з урахуванням вашого рівня підготовки, цілей та стану здоров'я. Регулярний моніторинг прогресу та коригування програми дозволяє досягти результату вдвічі швидше ніж у групі.",
+  },
+  {
+    icon: <IconDroplets {...iconProps} />, iconSmall: <IconDroplets {...iconSmall} />,
+    title: "Душові кімнати",
+    desc: "Чисті та зручні душові кімнати з усім необхідним після тренування.",
+    details: "Окремі душові кабіни для чоловіків та жінок з постійною гарячою водою. Надаємо рушники, одноразові капці та базові засоби гігієни. Прибирання проводиться декілька разів на день для підтримання ідеальної чистоти.",
+  },
+  {
+    icon: <IconMoodKid {...iconProps} />, iconSmall: <IconMoodKid {...iconSmall} />,
+    title: "Дитяча йога",
+    desc: "Спеціальні заняття для дітей від 5 років. Гнучкість, координація і любов до здоров'я.",
+    details: "Заняття проводяться у форматі гри та орієнтовані на розвиток гнучкості, координації та уважності. Досвідчені дитячі інструктори створюють безпечну та веселу атмосферу. Групи формуються за віком: 5–8 років та 9–14 років. Максимум 10 дітей у групі.",
+  },
 ];
 
 export default function Services() {
-  const { openBooking, openContact } = useModal();
+  const { openBooking, openService } = useModal();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
@@ -67,7 +103,10 @@ export default function Services() {
                 <div className="mb-1">{s.icon}</div>
                 <h3 className="font-semibold text-gray-900 text-[15px]">{s.title}</h3>
                 <p className="text-gray-500 text-sm flex-1 leading-relaxed">{s.desc}</p>
-                <button onClick={openContact} className="cursor-pointer text-[#485C46] text-sm font-medium border border-[#485C46] px-4 py-1.5 rounded-md w-fit hover:bg-[#485C46] hover:text-white transition-colors">
+                <button
+                  onClick={() => openService({ icon: s.iconSmall, title: s.title, desc: s.desc, details: s.details })}
+                  className="cursor-pointer text-[#485C46] text-sm font-medium border border-[#485C46] px-4 py-1.5 rounded-md w-fit hover:bg-[#485C46] hover:text-white transition-colors"
+                >
                   Дізнатись більше
                 </button>
               </div>
