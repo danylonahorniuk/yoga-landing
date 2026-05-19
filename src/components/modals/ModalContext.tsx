@@ -7,6 +7,7 @@ export type ServiceData = {
   title: string;
   desc: string;
   details: string;
+  image: string;
 };
 
 type ModalType = "booking" | "contact" | "service" | null;
