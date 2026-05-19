@@ -51,7 +51,7 @@ export default function FAQ() {
           <p className="text-gray-500 text-base">Відповіді на те, що запитують найчастіше</p>
         </div>
 
-        <div className="flex flex-col divide-y divide-gray-100">
+        <div className="bg-[#F5F0E8] rounded-2xl px-6 divide-y divide-[#E8E2D6]">
           {faqs.map((faq, i) => (
             <div key={i}>
               <button
@@ -72,7 +72,7 @@ export default function FAQ() {
                 className="overflow-hidden transition-all duration-300"
                 style={{ maxHeight: openIndex === i ? "300px" : "0px", opacity: openIndex === i ? 1 : 0 }}
               >
-                <p className="text-gray-500 text-sm leading-relaxed pb-5">
+                <p className="text-gray-600 text-sm leading-relaxed pb-5">
                   {faq.a}
                 </p>
               </div>
