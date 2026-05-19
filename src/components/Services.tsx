@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   IconSeeding,
@@ -71,6 +71,13 @@ export default function Services() {
   const { openBooking, openService } = useModal();
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    services.forEach((s) => {
+      const img = new window.Image();
+      img.src = s.image;
+    });
+  }, []);
+
   const scroll = (dir: "left" | "right") => {
     scrollRef.current?.scrollBy({ left: dir === "left" ? -300 : 300, behavior: "smooth" });
   };
@@ -106,7 +113,6 @@ export default function Services() {
                 key={s.title}
                 className="rounded-2xl px-6 py-5 w-[250px] flex-shrink-0 flex flex-col gap-3 hover:shadow-md transition-shadow"
                 style={{ backgroundColor: "#EEF1F6" }}
-                onMouseEnter={() => { const img = new window.Image(); img.src = s.image; }}
               >
                 <div className="mb-1">{s.icon}</div>
                 <h3 className="font-semibold text-gray-900 text-[15px]">{s.title}</h3>
