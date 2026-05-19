@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useModal } from "./modals/ModalContext";
 
@@ -80,6 +80,20 @@ export default function Classes() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const active = tabs.find((t) => t.id === displayId)!;
+
+  useEffect(() => {
+    const preload = () => {
+      tabs.forEach((t) => {
+        const img = new window.Image();
+        img.src = `/_next/image?url=${encodeURIComponent(t.image)}&w=828&q=75`;
+      });
+    };
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(preload);
+    } else {
+      setTimeout(preload, 2000);
+    }
+  }, []);
 
   const handleTab = (id: string) => {
     if (id === activeId || isExiting) return;
