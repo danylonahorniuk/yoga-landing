@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Menu, X, Leaf, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 import { useModal } from "./modals/ModalContext";
 
 const links = [
@@ -29,7 +30,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 font-bold" style={{ color: "#485C46" }}>
-          <Leaf size={22} />
+          <Image src="/logo.webp" alt="Great Fit Yoga Studio" width={36} height={36} className="object-contain" />
           <span className="text-sm leading-tight">
             Great Fit<br />
             <span className="font-normal text-xs text-gray-500">Yoga Studio</span>
