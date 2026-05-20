@@ -64,7 +64,7 @@ export default function Pricing() {
 
         <div className="grid md:grid-cols-3 gap-6 items-center">
           {plans.map((plan, i) => (
-            <FadeIn key={plan.name} delay={i * 0.1}>
+            <FadeIn key={plan.name} delay={plan.highlight ? 0.1 : 0.3}>
             <div
               key={plan.name}
               className={`rounded-2xl p-8 flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default ${
