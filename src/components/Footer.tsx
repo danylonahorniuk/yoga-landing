@@ -80,7 +80,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-gray-400 text-xs">© 2024 Great Fit Yoga Studio. Всі права захищені</p>
+          <p className="text-gray-400 text-xs">© 2026 Great Fit Yoga Studio. Всі права захищені</p>
         </div>
       </div>
     </footer>

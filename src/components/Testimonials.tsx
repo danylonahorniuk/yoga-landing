@@ -34,7 +34,7 @@ const reviews = [
     role: "Відвідує 2 роки",
     text: "Прийшла на пробне заняття і залишилась назавжди. Ця студія стала для мене другим домом. Дякую всій команді за любов до своєї справи!",
     rating: 5,
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces&q=80",
+    img: "https://images.unsplash.com/photo-1552334949-51934e5f2d38?w=100&h=100&fit=crop&crop=faces&q=80",
   },
   {
     name: "Максим Бондаренко",
