@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 const trainers = [
   {
@@ -85,13 +86,16 @@ export default function Team() {
     <section id="team" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Наша команда</h2>
-          <p className="text-gray-500 text-base">Досвідчені фахівці, що присвятили себе вашому добробуту</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Наша команда</h2>
+            <p className="text-gray-500 text-base">Досвідчені фахівці, що присвятили себе вашому добробуту</p>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {trainers.map((t) => (
+          {trainers.map((t, i) => (
+            <FadeIn key={t.name} delay={i * 0.08}>
             <button
               key={t.name}
               onClick={() => setSelected(t)}
@@ -107,6 +111,7 @@ export default function Team() {
               </div>
               <div className="w-2 h-2 rounded-full bg-[#485C46]/30 flex-shrink-0" />
             </button>
+            </FadeIn>
           ))}
         </div>
       </div>

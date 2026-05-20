@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { IconBrandInstagram } from "@tabler/icons-react";
+import { FadeIn } from "./ui/FadeIn";
 
 const hours = [
   { days: "Понеділок – П'ятниця", time: "07:00 – 21:00" },
@@ -18,10 +19,12 @@ export default function Contacts() {
     <section id="contacts" className="py-20 bg-[#F5F0E8]">
       <div className="max-w-7xl mx-auto px-6">
 
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Як нас знайти</h2>
-          <p className="text-gray-500 text-base">Ми знаходимось у центрі міста — зручно добиратись</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Як нас знайти</h2>
+            <p className="text-gray-500 text-base">Ми знаходимось у центрі міста — зручно добиратись</p>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
 
@@ -29,6 +32,7 @@ export default function Contacts() {
           <div className="flex flex-col gap-4">
 
             {/* Address */}
+            <FadeIn delay={0.1} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
@@ -49,8 +53,10 @@ export default function Contacts() {
                 Відкрити у Google Maps →
               </a>
             </div>
+            </FadeIn>
 
             {/* Contacts */}
+            <FadeIn delay={0.2} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
@@ -75,8 +81,10 @@ export default function Contacts() {
                 ))}
               </div>
             </div>
+            </FadeIn>
 
             {/* Hours */}
+            <FadeIn delay={0.3} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
@@ -93,10 +101,12 @@ export default function Contacts() {
                 ))}
               </div>
             </div>
+            </FadeIn>
 
           </div>
 
           {/* Right: map */}
+          <FadeIn delay={0.15} direction="right">
           <div className="rounded-2xl overflow-hidden shadow-sm h-[460px]">
             <iframe
               src="https://maps.google.com/maps?q=Хрещатик+22+Київ&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -108,6 +118,7 @@ export default function Contacts() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+          </FadeIn>
 
         </div>
       </div>

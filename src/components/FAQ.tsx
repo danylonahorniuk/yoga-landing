@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { FadeIn } from "./ui/FadeIn";
 
 const faqs = [
   {
@@ -46,11 +47,14 @@ export default function FAQ() {
     <section id="faq" className="py-20 bg-white">
       <div className="max-w-3xl mx-auto px-6">
 
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Часті запитання</h2>
-          <p className="text-gray-500 text-base">Відповіді на те, що запитують найчастіше</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Часті запитання</h2>
+            <p className="text-gray-500 text-base">Відповіді на те, що запитують найчастіше</p>
+          </div>
+        </FadeIn>
 
+        <FadeIn delay={0.1}>
         <div className="bg-[#F5F0E8] rounded-2xl px-6 divide-y divide-[#E8E2D6]">
           {faqs.map((faq, i) => (
             <div key={i}>
@@ -79,6 +83,7 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+        </FadeIn>
 
       </div>
     </section>

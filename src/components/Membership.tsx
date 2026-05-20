@@ -1,6 +1,7 @@
 "use client";
 import { Info } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 export default function Membership() {
   const { openBooking, openContact } = useModal();
@@ -16,7 +17,8 @@ export default function Membership() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
-        <div className="bg-white rounded-2xl p-8 md:p-10 max-w-xl w-full shadow-2xl">
+        <FadeIn direction="left" className="max-w-xl w-full">
+        <div className="bg-white rounded-2xl p-8 md:p-10 w-full shadow-2xl">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
             Безкоштовне 30-денне членство
           </h2>
@@ -39,6 +41,7 @@ export default function Membership() {
             </button>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 import { Check } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 const plans = [
   {
@@ -54,13 +55,16 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Тарифи та ціни</h2>
-          <p className="text-gray-500 text-base">Оберіть план, що підходить саме вам</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Тарифи та ціни</h2>
+            <p className="text-gray-500 text-base">Оберіть план, що підходить саме вам</p>
+          </div>
+        </FadeIn>
 
         <div className="grid md:grid-cols-3 gap-6 items-center">
-          {plans.map((plan) => (
+          {plans.map((plan, i) => (
+            <FadeIn key={plan.name} delay={i * 0.1}>
             <div
               key={plan.name}
               className={`rounded-2xl p-8 flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default ${
@@ -108,6 +112,7 @@ export default function Pricing() {
                 {plan.cta}
               </button>
             </div>
+            </FadeIn>
           ))}
         </div>
 

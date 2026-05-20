@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Info } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 export default function Hero() {
   const { openBooking, openContact } = useModal();
@@ -31,6 +32,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 min-h-screen flex items-center">
         <div className="max-w-lg pt-16">
+          <FadeIn delay={0.1}>
           <h1
             className="uppercase mb-6 leading-none tracking-wide"
             style={{
@@ -42,9 +44,13 @@ export default function Hero() {
           >
             Йога перш<br />за все
           </h1>
+          </FadeIn>
+          <FadeIn delay={0.25}>
           <p className="text-gray-700 text-base md:text-lg mb-8 max-w-sm leading-relaxed">
             Ласкаво просимо до Great Fit — місця, де традиції зустрічаються з інноваціями. Наші тренери проведуть вас через трансформаційні програми, що зміцнять тіло та заспокоять розум.
           </p>
+          </FadeIn>
+          <FadeIn delay={0.4}>
           <div className="flex flex-wrap items-center gap-4">
             <button
               onClick={openBooking}
@@ -60,6 +66,7 @@ export default function Hero() {
               <Info size={16} />
             </button>
           </div>
+          </FadeIn>
         </div>
       </div>
     </section>
