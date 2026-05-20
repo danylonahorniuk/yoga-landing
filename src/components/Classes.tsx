@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 const tabs = [
   {
@@ -110,12 +111,15 @@ export default function Classes() {
   return (
     <section id="facility" className="py-20 bg-[#F5F0E8]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-5xl font-bold text-gray-900 mb-3">Останні класи</h2>
-          <p className="text-gray-500 text-base">Оберіть програму, що підходить саме вам</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-10">
+            <h2 className="text-5xl font-bold text-gray-900 mb-3">Останні класи</h2>
+            <p className="text-gray-500 text-base">Оберіть програму, що підходить саме вам</p>
+          </div>
+        </FadeIn>
 
         {/* Tabs */}
+        <FadeIn delay={0.1}>
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {tabs.map((t) => (
             <button
@@ -131,8 +135,10 @@ export default function Classes() {
             </button>
           ))}
         </div>
+        </FadeIn>
 
         {/* Content */}
+        <FadeIn delay={0.2}>
         <div
           key={enterKey}
           className="grid md:grid-cols-2 gap-10 items-start"
@@ -184,6 +190,7 @@ export default function Classes() {
             </button>
           </div>
         </div>
+        </FadeIn>
       </div>
     </section>
   );

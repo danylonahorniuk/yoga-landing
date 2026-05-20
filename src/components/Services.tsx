@@ -11,6 +11,7 @@ import {
   IconMoodKid,
 } from "@tabler/icons-react";
 import { useModal } from "./modals/ModalContext";
+import { FadeIn } from "./ui/FadeIn";
 
 const iconProps = { size: 48, stroke: 1.8, color: "#485C46" };
 const iconSmall = { size: 28, stroke: 1.8, color: "#485C46" };
@@ -92,14 +93,17 @@ export default function Services() {
   return (
     <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Наші Послуги</h2>
-          <p className="text-gray-500 text-base">Все що потрібно для вашого добробуту</p>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2">Наші Послуги</h2>
+            <p className="text-gray-500 text-base">Все що потрібно для вашого добробуту</p>
+          </div>
+        </FadeIn>
 
         <div className="flex gap-7 items-stretch">
           {/* Promo card */}
-          <div className="hidden md:flex flex-col justify-between bg-[#485C46] text-white rounded-2xl p-7 w-[210px] flex-shrink-0">
+          <FadeIn direction="left" delay={0.1} className="hidden md:flex flex-shrink-0">
+          <div className="flex flex-col justify-between bg-[#485C46] text-white rounded-2xl p-7 w-[210px]">
             <div>
               <h3 className="font-bold text-base leading-snug mb-4 text-center">
                 Почніть з безкоштовного пробного заняття
@@ -112,9 +116,11 @@ export default function Services() {
               Спробувати безкоштовно
             </button>
           </div>
+          </FadeIn>
 
           {/* Scrollable cards */}
-          <div ref={scrollRef} className="flex gap-6 overflow-x-auto flex-1 pb-1" style={{ scrollbarWidth: "none" }}>
+          <FadeIn delay={0.2} className="flex-1 min-w-0">
+          <div ref={scrollRef} className="flex gap-6 overflow-x-auto pb-1 h-full" style={{ scrollbarWidth: "none" }}>
             {services.map((s) => (
               <div
                 key={s.title}
@@ -133,6 +139,7 @@ export default function Services() {
               </div>
             ))}
           </div>
+          </FadeIn>
         </div>
 
         <div className="flex justify-end gap-3 mt-6">
