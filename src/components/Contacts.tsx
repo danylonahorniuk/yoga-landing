@@ -26,12 +26,76 @@ export default function Contacts() {
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        {/* Mobile layout */}
+        <div className="md:hidden flex flex-col gap-4">
+          <FadeIn delay={0.1}>
+            {/* Map */}
+            <div className="rounded-2xl overflow-hidden shadow-sm h-[200px]">
+              <iframe
+                src="https://maps.google.com/maps?q=Хрещатик+22+Київ&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="100%" style={{ border: 0 }}
+                allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </FadeIn>
 
-          {/* Left: info */}
+          <FadeIn delay={0.2}>
+            {/* All info in one card */}
+            <div className="bg-white rounded-2xl overflow-hidden divide-y divide-gray-100">
+              {/* Address */}
+              <div className="flex items-start gap-3 p-4">
+                <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin size={15} color="#485C46" strokeWidth={1.8} />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-0.5">Адреса</p>
+                  <p className="text-gray-500 text-sm">вул. Хрещатик, 22, офіс 5, Київ</p>
+                  <a href="https://maps.google.com/?q=Хрещатик+22+Київ" target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-[#485C46] font-medium mt-1 inline-block">
+                    Google Maps →
+                  </a>
+                </div>
+              </div>
+
+              {/* Contacts */}
+              <div className="flex items-start gap-3 p-4">
+                <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Phone size={15} color="#485C46" strokeWidth={1.8} />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="font-semibold text-gray-900 text-sm">Контакти</p>
+                  {contacts.map(({ icon: Icon, label, href }) => (
+                    <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer" className="flex items-center gap-2 text-gray-500 text-sm">
+                      <Icon size={13} color="#485C46" strokeWidth={1.8} className="flex-shrink-0 opacity-60" />
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hours */}
+              <div className="flex items-start gap-3 p-4">
+                <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Clock size={15} color="#485C46" strokeWidth={1.8} />
+                </div>
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-900 text-sm mb-2">Години роботи</p>
+                  {hours.map(({ days, time }) => (
+                    <div key={days} className="flex justify-between items-center text-sm py-0.5">
+                      <span className="text-gray-400">{days}</span>
+                      <span className="font-medium text-gray-900">{time}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8 items-start">
           <div className="flex flex-col gap-4">
-
-            {/* Address */}
             <FadeIn delay={0.1} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
@@ -41,21 +105,15 @@ export default function Contacts() {
                 <p className="font-semibold text-gray-900">Адреса</p>
               </div>
               <p className="text-gray-500 text-sm leading-relaxed pl-11">
-                вул. Хрещатик, 22, офіс 5<br />
-                Київ, 01001
+                вул. Хрещатик, 22, офіс 5<br />Київ, 01001
               </p>
-              <a
-                href="https://maps.google.com/?q=Хрещатик+22+Київ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-2 pl-11 text-xs text-[#485C46] font-medium hover:underline transition-colors"
-              >
+              <a href="https://maps.google.com/?q=Хрещатик+22+Київ" target="_blank" rel="noopener noreferrer"
+                className="inline-block mt-2 pl-11 text-xs text-[#485C46] font-medium hover:underline">
                 Відкрити у Google Maps →
               </a>
             </div>
             </FadeIn>
 
-            {/* Contacts */}
             <FadeIn delay={0.2} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -66,24 +124,16 @@ export default function Contacts() {
               </div>
               <div className="flex flex-col gap-3 pl-11">
                 {contacts.map(({ icon: Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 group"
-                  >
+                  <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer" className="flex items-center gap-3 group">
                     <Icon size={15} color="#485C46" strokeWidth={1.8} className="flex-shrink-0 opacity-60" />
-                    <span className="text-gray-500 text-sm group-hover:text-gray-900 transition-colors">
-                      {label}
-                    </span>
+                    <span className="text-gray-500 text-sm group-hover:text-gray-900 transition-colors">{label}</span>
                   </a>
                 ))}
               </div>
             </div>
             </FadeIn>
 
-            {/* Hours */}
             <FadeIn delay={0.3} direction="left">
             <div className="bg-white rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -102,24 +152,17 @@ export default function Contacts() {
               </div>
             </div>
             </FadeIn>
-
           </div>
 
-          {/* Right: map */}
           <FadeIn delay={0.15} direction="right">
-          <div className="rounded-2xl overflow-hidden shadow-sm h-[260px] md:h-[460px]">
+          <div className="rounded-2xl overflow-hidden shadow-sm h-[460px]">
             <iframe
               src="https://maps.google.com/maps?q=Хрещатик+22+Київ&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              width="100%" height="100%" style={{ border: 0 }}
+              allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
           </FadeIn>
-
         </div>
       </div>
     </section>
