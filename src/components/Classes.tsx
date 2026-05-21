@@ -121,7 +121,8 @@ export default function Classes() {
         {/* Tabs */}
         <FadeIn delay={0.1}>
           {/* Mobile: horizontal scroll */}
-          <div className="md:hidden flex gap-2 overflow-x-auto pb-1 mb-8" style={{ scrollbarWidth: "none" }}>
+          <div className="md:hidden relative mb-8">
+            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
             {tabs.map((t) => (
               <button
                 key={t.id}
@@ -135,6 +136,9 @@ export default function Classes() {
                 {t.label}
               </button>
             ))}
+            </div>
+            {/* Fade hint — more tabs to the right */}
+            <div className="absolute right-0 top-0 bottom-1 w-10 pointer-events-none" style={{ background: "linear-gradient(to right, transparent, #F5F0E8)" }} />
           </div>
           {/* Desktop: wrap */}
           <div className="hidden md:flex flex-wrap gap-2 justify-center mb-10">
