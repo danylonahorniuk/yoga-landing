@@ -17,7 +17,7 @@ export default function Membership() {
 
       {/* Mobile: text over image with gradient */}
       <div className="md:hidden relative" style={{ minHeight: 320, ...bgStyle }}>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.35) 100%)" }} />
         <FadeIn className="relative z-10 px-6 pt-16 pb-10 flex flex-col justify-end min-h-[320px]">
           <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
             Безкоштовне 30-денне членство
