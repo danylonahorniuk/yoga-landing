@@ -43,7 +43,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-5">
+        <nav className="hidden lg:flex items-center gap-5">
           {links.map((l) => (
             <a
               key={l.href}
@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* CTA */}
         <button
           onClick={openBooking}
-          className="cursor-pointer hidden md:flex items-center gap-2 text-sm px-4 py-2 rounded-md bg-[#485C46] text-white hover:bg-[#3a4a38] transition-colors"
+          className="cursor-pointer hidden lg:flex items-center gap-2 text-sm px-4 py-2 rounded-md bg-[#485C46] text-white hover:bg-[#3a4a38] transition-colors"
         >
           <ShoppingBag size={15} />
           Записатись
@@ -66,7 +66,7 @@ export default function Navbar() {
 
         {/* Mobile burger */}
         <button
-          className="md:hidden text-gray-600"
+          className="lg:hidden text-gray-600"
           onClick={() => setOpen(!open)}
           aria-label="Меню"
           suppressHydrationWarning
@@ -77,7 +77,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-gray-100 px-6 py-4 flex flex-col gap-4 bg-white">
+        <div className="lg:hidden border-t border-gray-100 px-6 py-4 flex flex-col gap-4 bg-white">
           {links.map((l) => (
             <a
               key={l.href}
