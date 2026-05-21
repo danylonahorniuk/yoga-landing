@@ -108,6 +108,7 @@ export default function Team() {
                   <p className="font-semibold text-gray-900 text-sm leading-tight">{t.name}</p>
                   <p className="text-[#485C46] text-xs mt-0.5">{t.role}</p>
                   <p className="text-gray-400 text-[11px] mt-0.5">{t.exp}</p>
+                  <p className="text-[#485C46] text-[11px] font-medium mt-2">Детальніше →</p>
                 </div>
               </button>
             </FadeIn>
