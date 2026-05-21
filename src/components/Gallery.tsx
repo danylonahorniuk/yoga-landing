@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { FadeIn } from "./ui/FadeIn";
 
 const photos = [
@@ -16,13 +15,8 @@ const photos = [
 
 export default function Gallery() {
   const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState(1);
 
-  const go = (idx: number) => {
-    setDirection(idx > active ? 1 : -1);
-    setActive(idx);
-  };
-
+  const go = (idx: number) => setActive(idx);
   const prev = () => go((active - 1 + photos.length) % photos.length);
   const next = () => go((active + 1) % photos.length);
 
@@ -39,25 +33,26 @@ export default function Gallery() {
         <FadeIn delay={0.15}>
           {/* Main photo */}
           <div className="relative rounded-2xl overflow-hidden h-[280px] md:h-[500px] bg-gray-100">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={active}
+            {photos.map((p, i) => (
+              <div
+                key={i}
                 className="absolute inset-0"
-                initial={{ opacity: 0, x: direction * 60 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: direction * -60 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
+                style={{
+                  opacity: i === active ? 1 : 0,
+                  transition: "opacity 0.4s ease",
+                  zIndex: i === active ? 1 : 0,
+                }}
               >
                 <Image
-                  src={photos[active].src}
-                  alt={photos[active].alt}
+                  src={p.src}
+                  alt={p.alt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 1280px"
                   priority
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
 
             {/* Arrows */}
             <button
