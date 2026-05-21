@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Classes from "@/components/Classes";
 import Team from "@/components/Team";
+import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contacts from "@/components/Contacts";
@@ -24,6 +25,7 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <Team />
+      <Gallery />
       <Contacts />
       <FAQ />
       <Membership />
