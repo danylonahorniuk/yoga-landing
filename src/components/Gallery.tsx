@@ -6,12 +6,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FadeIn } from "./ui/FadeIn";
 
 const photos = [
-  { src: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1200&q=85", alt: "Зал для йоги" },
-  { src: "https://images.unsplash.com/photo-1601925228869-9571d9fab3cb?w=1200&q=85", alt: "Студія" },
-  { src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=85", alt: "Заняття з йоги" },
-  { src: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1200&q=85", alt: "Групове тренування" },
-  { src: "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?w=1200&q=85", alt: "Розтяжка" },
-  { src: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=1200&q=85", alt: "Практика йоги" },
+  { src: "https://images.unsplash.com/photo-1761971975724-31001b4de0bf?w=1200&q=85", alt: "Зал для йоги" },
+  { src: "https://images.unsplash.com/photo-1761971975973-cbb3e59263de?w=1200&q=85", alt: "Студія з великими вікнами" },
+  { src: "https://images.unsplash.com/photo-1761971975962-9cc397e2ba2a?w=1200&q=85", alt: "Зала з килимками" },
+  { src: "https://images.unsplash.com/photo-1687783615476-f4c12358ca9d?w=1200&q=85", alt: "Килимки для практики" },
+  { src: "https://images.unsplash.com/photo-1687783615494-b4a1f1af8b58?w=1200&q=85", alt: "Простора зала" },
+  { src: "https://images.unsplash.com/photo-1761971975047-6426232852ed?w=1200&q=85", alt: "Заняття в студії" },
 ];
 
 export default function Gallery() {
