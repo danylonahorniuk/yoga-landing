@@ -62,14 +62,14 @@ export default function Pricing() {
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-3 gap-6 items-center">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 items-center">
           {plans.map((plan, i) => (
             <FadeIn key={plan.name} delay={plan.highlight ? 0.1 : 0.3}>
             <div
               key={plan.name}
-              className={`rounded-2xl p-8 flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default ${
+              className={`rounded-2xl p-6 md:p-8 flex flex-col hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-default ${
                 plan.highlight
-                  ? "bg-[#485C46] text-white shadow-2xl scale-105"
+                  ? "bg-[#485C46] text-white shadow-2xl md:scale-105"
                   : "bg-[#E8E2D6] text-gray-900 shadow-md"
               }`}
             >

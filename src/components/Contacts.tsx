@@ -107,7 +107,7 @@ export default function Contacts() {
 
           {/* Right: map */}
           <FadeIn delay={0.15} direction="right">
-          <div className="rounded-2xl overflow-hidden shadow-sm h-[460px]">
+          <div className="rounded-2xl overflow-hidden shadow-sm h-[260px] md:h-[460px]">
             <iframe
               src="https://maps.google.com/maps?q=Хрещатик+22+Київ&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
