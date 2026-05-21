@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 const SITE_URL = "https://greatfit.ua";
-const OG_IMAGE = "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?w=1200&h=630&fit=crop&q=85";
+const OG_IMAGE = "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&h=630&fit=crop&q=85";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
