@@ -101,10 +101,32 @@ export default function Services() {
           </div>
         </FadeIn>
 
+        {/* Mobile: 2-column grid */}
+        <div className="md:hidden grid grid-cols-2 gap-3">
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="rounded-2xl px-4 py-4 flex flex-col gap-2"
+              style={{ backgroundColor: "#EEF1F6" }}
+            >
+              <div>{s.iconSmall}</div>
+              <h3 className="font-semibold text-gray-900 text-sm">{s.title}</h3>
+              <p className="text-gray-500 text-xs flex-1 leading-relaxed">{s.desc}</p>
+              <button
+                onClick={() => openService({ icon: s.iconSmall, title: s.title, desc: s.desc, details: s.details, image: s.image })}
+                className="cursor-pointer text-[#485C46] text-xs font-medium border border-[#485C46] px-3 py-1.5 rounded-md w-fit hover:bg-[#485C46] hover:text-white transition-colors mt-1"
+              >
+                Дізнатись більше
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: promo card + horizontal scroll */}
         <FadeIn delay={0.15}>
-        <div className="flex gap-7 items-stretch">
+        <div className="hidden md:flex gap-7 items-stretch">
           {/* Promo card */}
-          <div className="hidden md:flex flex-col justify-between bg-[#485C46] text-white rounded-2xl p-7 w-[210px] flex-shrink-0">
+          <div className="flex flex-col justify-between bg-[#485C46] text-white rounded-2xl p-7 w-[210px] flex-shrink-0">
             <div>
               <h3 className="font-bold text-base leading-snug mb-4 text-center">
                 Почніть з безкоштовного пробного заняття
@@ -150,7 +172,7 @@ export default function Services() {
         </div>
         </FadeIn>
 
-        <div className="flex justify-end gap-3 mt-6">
+        <div className="hidden md:flex justify-end gap-3 mt-6">
           <button onClick={() => scroll("left")} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors" aria-label="Назад">
             <ChevronLeft size={20} />
           </button>
