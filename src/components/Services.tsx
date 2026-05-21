@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -72,6 +72,8 @@ const services = [
 export default function Services() {
   const { openBooking, openService } = useModal();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const preload = () => {
@@ -101,25 +103,49 @@ export default function Services() {
           </div>
         </FadeIn>
 
-        {/* Mobile: 2-column grid */}
-        <div className="md:hidden grid grid-cols-2 gap-3">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="rounded-2xl px-4 py-4 flex flex-col gap-2"
-              style={{ backgroundColor: "#EEF1F6" }}
-            >
-              <div>{s.iconSmall}</div>
-              <h3 className="font-semibold text-gray-900 text-sm">{s.title}</h3>
-              <p className="text-gray-500 text-xs flex-1 leading-relaxed">{s.desc}</p>
-              <button
-                onClick={() => openService({ icon: s.iconSmall, title: s.title, desc: s.desc, details: s.details, image: s.image })}
-                className="cursor-pointer text-[#485C46] text-xs font-medium border border-[#485C46] px-3 py-1.5 rounded-md w-fit hover:bg-[#485C46] hover:text-white transition-colors mt-1"
+        {/* Mobile: snap scroll */}
+        <div className="md:hidden">
+          <div
+            ref={mobileScrollRef}
+            className="flex overflow-x-auto gap-4 pb-2"
+            style={{ scrollbarWidth: "none", scrollSnapType: "x mandatory" }}
+            onScroll={() => {
+              if (!mobileScrollRef.current) return;
+              const idx = Math.round(mobileScrollRef.current.scrollLeft / mobileScrollRef.current.offsetWidth);
+              setActiveIndex(idx);
+            }}
+          >
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="flex-shrink-0 w-full rounded-2xl px-6 py-7 flex flex-col gap-4"
+                style={{ backgroundColor: "#EEF1F6", scrollSnapAlign: "start" }}
               >
-                Дізнатись більше
-              </button>
-            </div>
-          ))}
+                <div>{s.icon}</div>
+                <h3 className="font-semibold text-gray-900 text-lg">{s.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed flex-1">{s.desc}</p>
+                <button
+                  onClick={() => openService({ icon: s.iconSmall, title: s.title, desc: s.desc, details: s.details, image: s.image })}
+                  className="cursor-pointer text-[#485C46] text-sm font-medium border border-[#485C46] px-4 py-2 rounded-md w-fit hover:bg-[#485C46] hover:text-white transition-colors"
+                >
+                  Дізнатись більше
+                </button>
+              </div>
+            ))}
+          </div>
+          {/* Dots */}
+          <div className="flex justify-center gap-1.5 mt-4">
+            {services.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  mobileScrollRef.current?.scrollTo({ left: i * mobileScrollRef.current.offsetWidth, behavior: "smooth" });
+                  setActiveIndex(i);
+                }}
+                className={`rounded-full transition-all duration-300 ${i === activeIndex ? "w-5 h-2 bg-[#485C46]" : "w-2 h-2 bg-gray-300"}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Desktop: promo card + horizontal scroll */}
