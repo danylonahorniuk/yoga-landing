@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Check } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useModal } from "./modals/ModalContext";
 import { FadeIn } from "./ui/FadeIn";
 
@@ -134,8 +135,18 @@ export default function Pricing() {
             ))}
           </div>
 
-          {/* Full card */}
-          <PlanCard plan={plan} openBooking={openBooking} />
+          {/* Full card with animation */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePlan}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <PlanCard plan={plan} openBooking={openBooking} />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Desktop: grid */}
