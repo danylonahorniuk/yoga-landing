@@ -140,53 +140,58 @@ export default function Team() {
 
       {/* Modal */}
       {(selected || isClosing) && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-4">
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={handleClose}
             style={{ animation: isClosing ? "backdropOut 0.28s ease-in both" : "backdropIn 0.28s ease-out both" }}
           />
           <div
-            className="relative bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden"
+            className="relative bg-white w-full md:max-w-md md:rounded-2xl rounded-t-2xl shadow-2xl overflow-hidden"
             style={{ animation: isClosing ? "modalOut 0.28s ease-in both" : "modalIn 0.32s ease-out both" }}
           >
-            {/* Handle bar (mobile) */}
-            <div className="sm:hidden flex justify-center pt-3 pb-1">
-              <div className="w-8 h-1 rounded-full bg-gray-300" />
+            {/* Mobile: handle + compact horizontal header */}
+            <div className="md:hidden">
+              <div className="flex justify-center pt-3 pb-1">
+                <div className="w-8 h-1 rounded-full bg-gray-300" />
+              </div>
+              <div className="bg-[#F5F0E8] px-5 pt-4 pb-4 flex items-center gap-4">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white shadow-sm">
+                  <Image src={selected?.img ?? ""} alt={selected?.name ?? ""} fill className="object-cover" sizes="56px" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-bold text-gray-900 leading-tight">{selected?.name}</h3>
+                  <p className="text-[#485C46] text-xs mt-0.5">{selected?.role}</p>
+                  <p className="text-gray-400 text-xs mt-0.5">{selected?.exp}</p>
+                </div>
+                <button onClick={handleClose} className="w-8 h-8 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors flex-shrink-0">
+                  <X size={15} />
+                </button>
+              </div>
             </div>
 
-            {/* Header */}
-            <div className="bg-[#F5F0E8] px-5 pt-4 pb-4 flex items-center gap-4">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white shadow-sm">
-                <Image src={selected?.img ?? ""} alt={selected?.name ?? ""} fill className="object-cover" sizes="56px" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base font-bold text-gray-900 leading-tight">{selected?.name}</h3>
-                <p className="text-[#485C46] text-xs mt-0.5">{selected?.role}</p>
-                <p className="text-gray-400 text-xs mt-0.5">{selected?.exp}</p>
-              </div>
-              <button
-                onClick={handleClose}
-                className="w-8 h-8 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors flex-shrink-0"
-              >
-                <X size={15} />
+            {/* Desktop: original centered header */}
+            <div className="hidden md:block bg-[#F5F0E8] px-6 pt-8 pb-6 text-center">
+              <button onClick={handleClose} className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors">
+                <X size={16} />
               </button>
+              <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4 ring-4 ring-white shadow-md mx-auto">
+                <Image src={selected?.img ?? ""} alt={selected?.name ?? ""} fill className="object-cover" sizes="96px" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900">{selected?.name}</h3>
+              <p className="text-[#485C46] text-sm mt-1">{selected?.role}</p>
+              <p className="text-gray-400 text-xs mt-1">{selected?.exp}</p>
             </div>
 
             {/* Body */}
-            <div className="px-5 py-4">
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">{selected?.bio}</p>
-              <div className="flex flex-wrap gap-1.5 mb-4">
+            <div className="px-5 md:px-6 py-4 md:py-6">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 md:mb-5">{selected?.bio}</p>
+              <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
                 {selected?.tags.map((tag) => (
-                  <span key={tag} className="text-xs text-[#485C46] bg-[#485C46]/10 px-2.5 py-1 rounded-full">
-                    {tag}
-                  </span>
+                  <span key={tag} className="text-xs text-[#485C46] bg-[#485C46]/10 px-2.5 md:px-3 py-1 rounded-full">{tag}</span>
                 ))}
               </div>
-              <button
-                onClick={handleBook}
-                className="cursor-pointer w-full bg-[#485C46] text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-[#3a4a38] transition-colors"
-              >
+              <button onClick={handleBook} className="cursor-pointer w-full bg-[#485C46] text-white py-2.5 md:py-3 rounded-lg text-sm font-semibold hover:bg-[#3a4a38] transition-colors">
                 Записатись до {selected?.genitive}
               </button>
             </div>
