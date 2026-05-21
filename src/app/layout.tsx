@@ -13,9 +13,35 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
 });
 
+const SITE_URL = "https://greatfit.ua";
+const OG_IMAGE = "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?w=1200&h=630&fit=crop&q=85";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Great Fit Yoga Studio — Студія йоги у Києві",
   description: "Йога для будь-якого рівня підготовки. Хатха, флай-йога, інь-йога, аштанга та зумба. Перший місяць безкоштовно. Записуйтесь онлайн.",
+  alternates: {
+    canonical: SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Great Fit Yoga Studio",
+    locale: "uk_UA",
+    title: "Great Fit Yoga Studio — Студія йоги у Києві",
+    description: "Йога для будь-якого рівня підготовки. Хатха, флай-йога, інь-йога, аштанга та зумба. Перший місяць безкоштовно.",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Great Fit Yoga Studio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Great Fit Yoga Studio — Студія йоги у Києві",
+    description: "Йога для будь-якого рівня підготовки. Перший місяць безкоштовно.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function RootLayout({
