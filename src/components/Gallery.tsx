@@ -49,7 +49,7 @@ export default function Gallery() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 1280px"
-                  priority
+                  priority={i === 0}
                 />
               </div>
             ))}
@@ -90,7 +90,7 @@ export default function Gallery() {
                 style={{ height: 64 }}
                 aria-label={p.alt}
               >
-                <Image src={p.src} alt={p.alt} fill className="object-cover" sizes="15vw" />
+                <Image src={p.src} alt={p.alt} fill className="object-cover" sizes="15vw" loading="lazy" />
               </button>
             ))}
           </div>
