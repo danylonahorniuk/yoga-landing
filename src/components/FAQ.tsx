@@ -85,14 +85,12 @@ export default function FAQ() {
             ))}
           </div>
 
-          {!showAll && (
-            <button
-              onClick={() => setShowAll(true)}
-              className="cursor-pointer mt-4 w-full py-3 rounded-xl border border-[#485C46]/30 text-sm font-medium text-[#485C46] hover:bg-[#485C46]/5 transition-colors"
-            >
-              Показати ще {faqs.length - VISIBLE_DEFAULT} питання ↓
-            </button>
-          )}
+          <button
+            onClick={() => { setShowAll(v => !v); if (showAll) setOpenIndex(null); }}
+            className="cursor-pointer mt-4 w-full py-3 rounded-xl border border-[#485C46]/30 text-sm font-medium text-[#485C46] hover:bg-[#485C46]/5 transition-colors"
+          >
+            {showAll ? "Згорнути ↑" : `Показати ще ${faqs.length - VISIBLE_DEFAULT} питання ↓`}
+          </button>
         </FadeIn>
 
       </div>
