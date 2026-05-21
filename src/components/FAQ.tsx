@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { FadeIn } from "./ui/FadeIn";
 
 const faqs = [
@@ -70,35 +69,25 @@ export default function FAQ() {
                     <span className={`text-sm font-semibold transition-colors ${openIndex === i ? "text-[#485C46]" : "text-gray-900 group-hover:text-[#485C46]"}`}>{faq.q}</span>
                     <ChevronDown size={18} className="flex-shrink-0 text-gray-400 transition-transform duration-300" style={{ transform: openIndex === i ? "rotate(180deg)" : "rotate(0deg)" }} />
                   </button>
-                  <AnimatePresence initial={false}>
-                    {openIndex === i && (
-                      <motion.div key="a" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: "easeInOut" }} className="overflow-hidden">
-                        <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openIndex === i ? "400px" : 0, opacity: openIndex === i ? 1 : 0 }}>
+                    <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
+                  </div>
                 </div>
               ))}
-              <AnimatePresence initial={false}>
-                {showAll && faqs.slice(VISIBLE_DEFAULT).map((faq, i) => {
-                  const idx = VISIBLE_DEFAULT + i;
-                  return (
-                    <motion.div key={idx} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25, delay: i * 0.05, ease: "easeOut" }}>
-                      <button onClick={() => toggle(idx)} className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer group">
-                        <span className={`text-sm font-semibold transition-colors ${openIndex === idx ? "text-[#485C46]" : "text-gray-900 group-hover:text-[#485C46]"}`}>{faq.q}</span>
-                        <ChevronDown size={18} className="flex-shrink-0 text-gray-400 transition-transform duration-300" style={{ transform: openIndex === idx ? "rotate(180deg)" : "rotate(0deg)" }} />
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {openIndex === idx && (
-                          <motion.div key="a" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: "easeInOut" }} className="overflow-hidden">
-                            <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
+              {showAll && faqs.slice(VISIBLE_DEFAULT).map((faq, i) => {
+                const idx = VISIBLE_DEFAULT + i;
+                return (
+                  <div key={idx} style={{ opacity: showAll ? 1 : 0, transition: `opacity 0.25s ease ${i * 0.05}s` }}>
+                    <button onClick={() => toggle(idx)} className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer group">
+                      <span className={`text-sm font-semibold transition-colors ${openIndex === idx ? "text-[#485C46]" : "text-gray-900 group-hover:text-[#485C46]"}`}>{faq.q}</span>
+                      <ChevronDown size={18} className="flex-shrink-0 text-gray-400 transition-transform duration-300" style={{ transform: openIndex === idx ? "rotate(180deg)" : "rotate(0deg)" }} />
+                    </button>
+                    <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openIndex === idx ? "400px" : 0, opacity: openIndex === idx ? 1 : 0 }}>
+                      <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
             <button
               onClick={() => { setShowAll(v => !v); if (showAll) setOpenIndex(null); }}
@@ -116,13 +105,9 @@ export default function FAQ() {
                   <span className={`text-sm font-semibold transition-colors ${openIndex === i ? "text-[#485C46]" : "text-gray-900 group-hover:text-[#485C46]"}`}>{faq.q}</span>
                   <ChevronDown size={18} className="flex-shrink-0 text-gray-400 transition-transform duration-300" style={{ transform: openIndex === i ? "rotate(180deg)" : "rotate(0deg)" }} />
                 </button>
-                <AnimatePresence initial={false}>
-                  {openIndex === i && (
-                    <motion.div key="a" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: "easeInOut" }} className="overflow-hidden">
-                      <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: openIndex === i ? "400px" : 0, opacity: openIndex === i ? 1 : 0 }}>
+                  <p className="text-gray-600 text-sm leading-relaxed pb-5">{faq.a}</p>
+                </div>
               </div>
             ))}
           </div>

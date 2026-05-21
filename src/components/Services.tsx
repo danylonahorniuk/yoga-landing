@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   IconSeeding,
@@ -167,19 +166,14 @@ export default function Services() {
           </div>
 
           {/* Scrollable cards */}
-          <motion.div
+          <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-1 flex-1 min-w-0"
             style={{ scrollbarWidth: "none" }}
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
           >
             {services.map((s) => (
-              <motion.div
+              <div
                 key={s.title}
-                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.7, ease: "easeOut" } } }}
                 className="rounded-2xl px-6 py-5 w-[250px] flex-shrink-0 flex flex-col gap-3 hover:shadow-md transition-shadow"
                 style={{ backgroundColor: "#EEF1F6" }}
               >
@@ -192,9 +186,9 @@ export default function Services() {
                 >
                   Дізнатись більше
                 </button>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
         </FadeIn>
 
