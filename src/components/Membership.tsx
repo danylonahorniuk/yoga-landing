@@ -5,44 +5,67 @@ import { FadeIn } from "./ui/FadeIn";
 
 export default function Membership() {
   const { openBooking, openContact } = useModal();
+  const bgStyle = {
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=85)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
   return (
-    <section
-      id="membership"
-      style={{
-        minHeight: "340px",
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url(https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=85)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
-        <FadeIn direction="left" className="max-w-xl w-full">
-        <div className="bg-white rounded-2xl p-8 md:p-10 w-full shadow-2xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+    <section id="membership">
+
+      {/* Mobile: text over image with gradient */}
+      <div className="md:hidden relative" style={{ minHeight: 320, ...bgStyle }}>
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)" }} />
+        <FadeIn className="relative z-10 px-6 pt-16 pb-10 flex flex-col justify-end min-h-[320px]">
+          <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
             Безкоштовне 30-денне членство
           </h2>
-          <p className="text-gray-500 text-sm mb-7">
-            Насолоджуйтесь безкоштовним 30-денним пробним членством. Отримайте доступ до нашої студії, досвідчених тренерів та різноманітних класів без будь-яких зобов'язань. Відчуйте переваги йоги та трансформуйте своє самопочуття.
+          <p className="text-white/75 text-sm mb-6 leading-relaxed">
+            Отримайте доступ до студії, тренерів та всіх класів без будь-яких зобов'язань.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={openBooking}
-              className="cursor-pointer bg-[#485C46] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#3a4a38] transition-colors"
-            >
+          <div className="flex flex-col gap-3">
+            <button onClick={openBooking}
+              className="cursor-pointer w-full bg-white text-[#485C46] px-6 py-3 rounded-md text-sm font-semibold hover:bg-gray-100 transition-colors">
               Записатись на сесію
             </button>
-            <button
-              onClick={openContact}
-              className="cursor-pointer flex items-center gap-2 text-gray-700 text-sm hover:text-[#485C46] transition-colors"
-            >
-              Зв'язатись з нами
-              <Info size={16} />
+            <button onClick={openContact}
+              className="cursor-pointer flex items-center justify-center gap-2 text-white/80 text-sm hover:text-white transition-colors">
+              Зв'язатись з нами <Info size={15} />
             </button>
           </div>
-        </div>
         </FadeIn>
       </div>
+
+      {/* Desktop: white card over image */}
+      <div className="hidden md:block" style={{ minHeight: 340, ...bgStyle }}>
+        <div style={{ background: "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35))", minHeight: 340 }}>
+          <div className="max-w-7xl mx-auto px-6 py-14 flex justify-end items-center min-h-[340px]">
+            <FadeIn direction="left" className="max-w-xl w-full">
+              <div className="bg-white rounded-2xl p-10 w-full shadow-2xl">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                  Безкоштовне 30-денне членство
+                </h2>
+                <p className="text-gray-500 text-sm mb-7">
+                  Насолоджуйтесь безкоштовним 30-денним пробним членством. Отримайте доступ до нашої студії, досвідчених тренерів та різноманітних класів без будь-яких зобов'язань. Відчуйте переваги йоги та трансформуйте своє самопочуття.
+                </p>
+                <div className="flex flex-wrap items-center gap-4">
+                  <button onClick={openBooking}
+                    className="cursor-pointer bg-[#485C46] text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-[#3a4a38] transition-colors">
+                    Записатись на сесію
+                  </button>
+                  <button onClick={openContact}
+                    className="cursor-pointer flex items-center gap-2 text-gray-700 text-sm hover:text-[#485C46] transition-colors">
+                    Зв'язатись з нами <Info size={16} />
+                  </button>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }
