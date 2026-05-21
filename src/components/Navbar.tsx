@@ -75,27 +75,64 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="lg:hidden border-t border-gray-100 px-6 py-4 flex flex-col gap-4 bg-white">
-          {links.map((l) => (
+    </header>
+
+      {/* Backdrop */}
+      <div
+        onClick={() => setOpen(false)}
+        className="lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all duration-300"
+        style={{
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? "auto" : "none",
+        }}
+      />
+
+      {/* Sidebar */}
+      <div
+        className="lg:hidden fixed top-0 right-0 bottom-0 z-50 w-72 bg-white flex flex-col shadow-2xl transition-transform duration-300 ease-in-out"
+        style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
+      >
+        {/* Sidebar header */}
+        <div className="flex items-center justify-between px-6 h-16 border-b border-gray-100 flex-shrink-0">
+          <span className="font-bold text-sm text-[#485C46]">Меню</span>
+          <button
+            onClick={() => setOpen(false)}
+            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+            aria-label="Закрити"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Links */}
+        <nav className="flex flex-col px-4 py-6 gap-1 flex-1">
+          {links.map((l, i) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-gray-600 hover:text-[#485C46] transition-colors"
               onClick={() => setOpen(false)}
+              className="text-sm text-gray-700 hover:text-[#485C46] hover:bg-[#485C46]/5 px-3 py-3 rounded-lg transition-colors"
+              style={{
+                transitionDelay: open ? `${i * 40}ms` : "0ms",
+                opacity: open ? 1 : 0,
+                transform: open ? "translateX(0)" : "translateX(20px)",
+                transition: `opacity 0.3s ease ${i * 40}ms, transform 0.3s ease ${i * 40}ms, color 0.15s, background 0.15s`,
+              }}
             >
               {l.label}
             </a>
           ))}
+        </nav>
+
+        {/* CTA */}
+        <div className="px-4 pb-8 flex-shrink-0">
           <button
-            className="cursor-pointer bg-[#485C46] text-white text-sm px-4 py-2 rounded-md text-center hover:bg-[#3a4a38] transition-colors"
             onClick={() => { setOpen(false); openBooking(); }}
+            className="cursor-pointer w-full bg-[#485C46] text-white text-sm px-4 py-3 rounded-lg font-medium hover:bg-[#3a4a38] transition-colors"
           >
-            Записатись
+            Записатись на заняття
           </button>
         </div>
-      )}
-    </header>
+      </div>
   );
 }
