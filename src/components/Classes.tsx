@@ -120,74 +120,108 @@ export default function Classes() {
 
         {/* Tabs */}
         <FadeIn delay={0.1}>
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {tabs.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => handleTab(t.id)}
-              className={`px-4 py-2 rounded-full text-sm border transition-colors ${
-                activeId === t.id
-                  ? "bg-white border-gray-400 text-gray-900 font-semibold shadow-sm"
-                  : "border-gray-300 text-gray-600 hover:border-gray-400"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+          {/* Mobile: horizontal scroll */}
+          <div className="md:hidden flex gap-2 overflow-x-auto pb-1 mb-8" style={{ scrollbarWidth: "none" }}>
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => handleTab(t.id)}
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm border transition-colors ${
+                  activeId === t.id
+                    ? "bg-white border-gray-400 text-gray-900 font-semibold shadow-sm"
+                    : "border-gray-300 text-gray-600"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+          {/* Desktop: wrap */}
+          <div className="hidden md:flex flex-wrap gap-2 justify-center mb-10">
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => handleTab(t.id)}
+                className={`px-4 py-2 rounded-full text-sm border transition-colors ${
+                  activeId === t.id
+                    ? "bg-white border-gray-400 text-gray-900 font-semibold shadow-sm"
+                    : "border-gray-300 text-gray-600 hover:border-gray-400"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </FadeIn>
 
         {/* Content */}
         <FadeIn delay={0.2}>
         <div
           key={enterKey}
-          className="grid md:grid-cols-2 gap-10 items-start"
           style={{
             animation: isExiting
               ? "slideOutLeft 0.26s ease-in both"
               : "slideInRight 0.35s ease-out both",
           }}
         >
-          {/* Image */}
-          <div className="relative h-80 md:h-[480px] rounded-2xl overflow-hidden">
-            <Image
-              src={active.image}
-              alt={active.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div
-              className="absolute inset-0 rounded-2xl pointer-events-none"
-              style={{ boxShadow: "inset 0 0 50px 18px #F5F0E8" }}
-            />
-          </div>
-
-          {/* Info */}
-          <div>
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">{active.title}</h3>
-            <p className="text-gray-600 text-base mb-8 leading-relaxed">{active.desc}</p>
-
-            <div className="grid grid-cols-2 gap-6">
+          {/* Mobile layout */}
+          <div className="md:hidden flex flex-col gap-5">
+            <div className="relative h-56 rounded-2xl overflow-hidden">
+              <Image src={active.image} alt={active.title} fill className="object-cover" sizes="100vw" />
+              <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ boxShadow: "inset 0 0 40px 14px #F5F0E8" }} />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900">{active.title}</h3>
+            <p className="text-gray-600 text-sm leading-relaxed">{active.desc}</p>
+            <div className="flex flex-col gap-3">
               {active.features.map((f) => (
-                <div key={f.n} className="flex flex-col gap-3">
-                  <div className="w-14 h-14 rounded-full border-2 border-[#485C46]/40 flex items-center justify-center text-2xl font-bold text-[#485C46]/70 flex-shrink-0">
+                <div key={f.n} className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full border-2 border-[#485C46]/40 flex items-center justify-center text-xs font-bold text-[#485C46]/70 flex-shrink-0 mt-0.5">
                     {f.n}
-                  </div>
+                  </span>
                   <div>
-                    <p className="font-bold text-gray-900 text-base">{f.title}</p>
-                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">{f.desc}</p>
+                    <p className="font-semibold text-gray-900 text-sm">{f.title}</p>
+                    <p className="text-gray-500 text-xs mt-0.5 leading-relaxed">{f.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
-
             <button
               onClick={openBooking}
-              className="cursor-pointer mt-10 inline-block bg-[#485C46] text-white px-8 py-3.5 rounded-md text-base font-medium hover:bg-[#3a4a38] transition-colors"
+              className="cursor-pointer w-full bg-[#485C46] text-white py-3 rounded-md text-sm font-medium hover:bg-[#3a4a38] transition-colors"
             >
               Отримати безкоштовне заняття
             </button>
+          </div>
+
+          {/* Desktop layout */}
+          <div className="hidden md:grid md:grid-cols-2 gap-10 items-start">
+            <div className="relative h-[480px] rounded-2xl overflow-hidden">
+              <Image src={active.image} alt={active.title} fill className="object-cover" sizes="50vw" />
+              <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{ boxShadow: "inset 0 0 50px 18px #F5F0E8" }} />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">{active.title}</h3>
+              <p className="text-gray-600 text-base mb-8 leading-relaxed">{active.desc}</p>
+              <div className="grid grid-cols-2 gap-6">
+                {active.features.map((f) => (
+                  <div key={f.n} className="flex flex-col gap-3">
+                    <div className="w-14 h-14 rounded-full border-2 border-[#485C46]/40 flex items-center justify-center text-2xl font-bold text-[#485C46]/70 flex-shrink-0">
+                      {f.n}
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 text-base">{f.title}</p>
+                      <p className="text-gray-500 text-sm mt-1 leading-relaxed">{f.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={openBooking}
+                className="cursor-pointer mt-10 inline-block bg-[#485C46] text-white px-8 py-3.5 rounded-md text-base font-medium hover:bg-[#3a4a38] transition-colors"
+              >
+                Отримати безкоштовне заняття
+              </button>
+            </div>
           </div>
         </div>
         </FadeIn>
