@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { useModal } from "./modals/ModalContext";
 import { FadeIn } from "./ui/FadeIn";
 
@@ -78,7 +79,19 @@ export default function Classes() {
   const [displayId, setDisplayId] = useState("beginners");
   const [isExiting, setIsExiting] = useState(false);
   const [enterKey, setEnterKey] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const active = tabs.find((t) => t.id === displayId)!;
 
@@ -120,25 +133,37 @@ export default function Classes() {
 
         {/* Tabs */}
         <FadeIn delay={0.1}>
-          {/* Mobile: horizontal scroll */}
-          <div className="md:hidden relative mb-8">
-            <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
-            {tabs.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => handleTab(t.id)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm border transition-colors ${
-                  activeId === t.id
-                    ? "bg-white border-gray-400 text-gray-900 font-semibold shadow-sm"
-                    : "border-gray-300 text-gray-600"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-            </div>
-            {/* Fade hint — more tabs to the right */}
-            <div className="absolute right-0 top-0 bottom-1 w-10 pointer-events-none" style={{ background: "linear-gradient(to right, transparent, #F5F0E8)" }} />
+          {/* Mobile: dropdown */}
+          <div className="md:hidden relative mb-6" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen((v) => !v)}
+              className="w-full flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm"
+            >
+              <span>{active.label}</span>
+              <ChevronDown
+                size={18}
+                className="text-gray-400 flex-shrink-0 transition-transform duration-200"
+                style={{ transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
+            </button>
+
+            {dropdownOpen && (
+              <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-20 overflow-hidden">
+                {tabs.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => { handleTab(t.id); setDropdownOpen(false); }}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${
+                      activeId === t.id
+                        ? "bg-[#485C46]/8 text-[#485C46] font-semibold"
+                        : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           {/* Desktop: wrap */}
           <div className="hidden md:flex flex-wrap gap-2 justify-center mb-10">
