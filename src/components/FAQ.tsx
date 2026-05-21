@@ -50,7 +50,7 @@ export default function FAQ() {
   const allFaqs = faqs;
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="py-20 bg-[#F5F0E8]">
       <div className="max-w-3xl mx-auto px-6">
 
         <FadeIn>
@@ -63,7 +63,7 @@ export default function FAQ() {
         <FadeIn delay={0.1}>
           {/* Mobile: 4 visible + show more */}
           <div className="md:hidden">
-            <div className="bg-[#F5F0E8] rounded-2xl px-6 divide-y divide-[#E8E2D6]">
+            <div className="bg-white rounded-2xl px-6 divide-y divide-gray-100">
               {faqs.slice(0, VISIBLE_DEFAULT).map((faq, i) => (
                 <div key={i}>
                   <button onClick={() => toggle(i)} className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer group">
@@ -109,7 +109,7 @@ export default function FAQ() {
           </div>
 
           {/* Desktop: all questions always visible */}
-          <div className="hidden md:block bg-[#F5F0E8] rounded-2xl px-6 divide-y divide-[#E8E2D6]">
+          <div className="hidden md:block bg-white rounded-2xl px-6 divide-y divide-gray-100">
             {faqs.map((faq, i) => (
               <div key={i}>
                 <button onClick={() => toggle(i)} className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer group">

@@ -16,7 +16,7 @@ const contacts = [
 
 export default function Contacts() {
   return (
-    <section id="contacts" className="py-20 bg-[#F5F0E8]">
+    <section id="contacts" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
 
         <FadeIn>
@@ -41,7 +41,7 @@ export default function Contacts() {
 
           <FadeIn delay={0.2}>
             {/* All info in one card */}
-            <div className="bg-white rounded-2xl overflow-hidden divide-y divide-gray-100">
+            <div className="bg-[#F5F0E8] rounded-2xl overflow-hidden divide-y divide-gray-100">
               {/* Address */}
               <div className="flex items-start gap-3 p-4">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -97,7 +97,7 @@ export default function Contacts() {
         <div className="hidden md:grid md:grid-cols-2 gap-8 items-start">
           <div className="flex flex-col gap-4">
             <FadeIn delay={0.1} direction="left">
-            <div className="bg-white rounded-2xl p-6">
+            <div className="bg-[#F5F0E8] rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={16} color="#485C46" strokeWidth={1.8} />
@@ -115,7 +115,7 @@ export default function Contacts() {
             </FadeIn>
 
             <FadeIn delay={0.2} direction="left">
-            <div className="bg-white rounded-2xl p-6">
+            <div className="bg-[#F5F0E8] rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
                   <Phone size={16} color="#485C46" strokeWidth={1.8} />
@@ -135,7 +135,7 @@ export default function Contacts() {
             </FadeIn>
 
             <FadeIn delay={0.3} direction="left">
-            <div className="bg-white rounded-2xl p-6">
+            <div className="bg-[#F5F0E8] rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-full bg-[#485C46]/10 flex items-center justify-center flex-shrink-0">
                   <Clock size={16} color="#485C46" strokeWidth={1.8} />
